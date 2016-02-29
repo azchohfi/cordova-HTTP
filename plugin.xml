@@ -92,7 +92,6 @@
         <config-file target="package.appxmanifest" parent="/Package/Capabilities">
             <DeviceCapability Name="internetClient" />
         </config-file>
-		<source-file src="src/windows/CordovaHttpPlugin.cs" />
 		<framework src="src/windows/CordovaHttpPlugin/SQLite.Proxy.csproj"
             custom="true" type="projectReference" target="all" />
     </platform>
