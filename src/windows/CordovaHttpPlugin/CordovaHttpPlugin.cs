@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Security.Cryptography.Certificates;
 using Windows.Web.Http;
 
@@ -9,6 +10,47 @@ namespace CordovaHttpPlugin
 {
     public sealed class CordovaHttpPlugin
     {
+        public void UseBasicAuth(string username, string password)
+        {
+            Debug.WriteLine(String.Format("{0} : {1}", username, password));
+        }
+
+        public void SetHeader(string header, string value)
+        {
+            Debug.WriteLine(String.Format("{0} : {1}", header, value));
+        }
+
+        public void EnableSSLPinning(bool enable)
+        {
+            Debug.WriteLine(String.Format("{0}", enable));
+        }
+
+        public void AcceptAllCerts(bool allow)
+        {
+            Debug.WriteLine(String.Format("{0}", allow));
+        }
+
+        public void Post(string url, [ReadOnlyArray]object[] parameters, [ReadOnlyArray]string[] headers)
+        {
+            Debug.WriteLine(String.Format("{0} : {1} : {2}", url, parameters.Length, headers.Length));
+        }
+
+        public void Get(string url, [ReadOnlyArray]object[] parameters, [ReadOnlyArray]string[] headers)
+        {
+            Debug.WriteLine(String.Format("{0} : {1} : {2}", url, parameters.Length, headers.Length));
+        }
+
+        public void UploadFile(string url, [ReadOnlyArray]object[] parameters, [ReadOnlyArray]string[] headers, string filePath, string name)
+        {
+            Debug.WriteLine(String.Format("{0} : {1} : {2} : {3} : {4}", url, parameters.Length, headers.Length,
+                filePath, name));
+        }
+
+        public void DownloadFile(string url, [ReadOnlyArray]object[] parameters, [ReadOnlyArray]string[] headers, string filePath)
+        {
+            Debug.WriteLine(String.Format("{0} : {1} : {2} : {3}", url, parameters.Length, headers.Length, filePath));
+        }
+
         public async void X()
         {
             // Send a get request to Bing
